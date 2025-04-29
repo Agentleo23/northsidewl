@@ -4,56 +4,59 @@
 html, body {
   width: 100%; height: 100%;
   font-family: sans-serif;
-  background: white;
+  background: #333; /* pour mieux voir l’overlay */
 }
 
-/* Lien couvrant tout l’écran */
+/* Lien plein écran */
 #overlay {
   display: flex;
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.7);
   text-decoration: none;
   color: inherit;
   align-items: center;
   justify-content: center;
 }
 
-/* La boîte blanche de consignes */
+/* Boîte blanche centrale */
 #tooltip {
   position: relative;
   background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  max-width: 80%;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 90%;
   text-align: left;
-  line-height: 1.4;
+  line-height: 1.5;
+  font-size: 1.2rem; /* texte plus grand */
 }
 
 /* Texte plus petit pour la 3ᵉ étape */
 #tooltip .small {
-  font-size: 0.85rem;
+  font-size: 1rem;
   margin-top: 0.5rem;
   color: #555;
 }
 
-/* Flèche animée en haut à droite */
+/* Grande flèche animée en haut à droite */
 #corner-arrow {
-  position: absolute;
-  width: 3rem; height: 3rem;
-  top: 1rem; right: 1rem;
+  position: fixed; /* fixe par rapport à la fenêtre */
+  width: 5rem; height: 5rem;  /* plus grande */
+  top: 1rem; 
+  right: 1rem;
   background: url('data:image/svg+xml;utf8,\
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
-      <path d="M4 20l16-8-16-8v16z" fill="black"/>\
+      <path d="M4 20l16-8-16-8v16z" fill="white"/>\
     </svg>') no-repeat center;
   background-size: contain;
   animation: bounce 1s infinite alternate;
   z-index: 1001;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
 }
 
-/* Animation de rebond de la flèche */
+/* Animation de rebond */
 @keyframes bounce {
   from { transform: translateY(0); }
-  to   { transform: translateY(-10px); }
+  to   { transform: translateY(-15px); }
 }
