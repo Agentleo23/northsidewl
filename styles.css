@@ -44,23 +44,29 @@ html, body {
   color:#555;
 }
 
-/* Flèche animée vers le haut */
+/* Flèche très visible, plus grande, plus proche du bord, et rebond rapide */
 #corner-arrow {
-  position:fixed;
-  width:10rem; height:10rem;
-  top:4rem;
-  right:1rem;
+  position: fixed;
+  width: 20rem;            /* +⅓ par rapport à 15rem */
+  height: 20rem;
+  top: 6rem;               /* plus bas pour qu’elle pointe bien */
+  right: 0.5rem;           /* plus proche du bord droit */
   background: url('data:image/svg+xml;utf8,\
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
-      <line x1="50" y1="100" x2="50" y2="20" stroke="white" stroke-width="10"/>\
+      <line x1="50" y1="100" x2="50" y2="20" stroke="white" stroke-width="15"/>\
       <polygon points="30,20 50,0 70,20" fill="white"/>\
-      <line x1="50" y1="100" x2="50" y2="20" stroke="black" stroke-width="2"/>\
-      <polygon points="30,20 50,0 70,20" fill="none" stroke="black" stroke-width="2"/>\
+      <line x1="50" y1="100" x2="50" y2="20" stroke="black" stroke-width="3"/>\
+      <polygon points="30,20 50,0 70,20" fill="none" stroke="black" stroke-width="3"/>\
     </svg>') no-repeat center;
-  background-size:contain;
-  animation:bounce 1s infinite alternate;
-  filter:drop-shadow(0 0 5px rgba(0,0,0,0.7));
-  z-index:1001;
+  background-size: contain;
+  animation: bounce 0.5s infinite alternate ease-in-out; /* + rapide */
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.9));      /* lueur blanche */
+  z-index: 1001;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-40px); } /* rebond plus ample */
 }
 
 @keyframes bounce {
