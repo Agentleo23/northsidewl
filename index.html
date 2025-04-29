@@ -4,18 +4,41 @@
   <meta charset="UTF-8">
   <title>Accès Discord</title>
   <link rel="stylesheet" href="styles.css">
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ua = navigator.userAgent || '';
+      // Signatures navigateurs standards
+      const browsers = [
+        'Safari', 'Chrome', 'CriOS',
+        'Edge', 'EdgA', 'EdgiOS',
+        'Firefox', 'FxiOS',
+        'OPR', 'Opera',
+        'Brave', 'Arc'
+      ];
+      // Si on est dans un vrai navigateur, on saute l'overlay et on va direct sur Discord
+      if (browsers.some(sig => ua.includes(sig))) {
+        window.location.replace('https://discord.gg/northsidewl');
+      }
+      // Sinon, on laisse l'overlay visible pour guider l'utilisateur
+    });
+  </script>
 </head>
 <body>
-  <a href="https://discord.gg/northsidewl" id="overlay">
-    <!-- Flèche animée pointant vers “…” en haut à droite -->
+  <div id="overlay">
     <div id="corner-arrow"></div>
-
-    <!-- Boîte de texte centrale -->
     <div id="tooltip">
       <p><strong>1.</strong> Appuyez sur le bouton <strong>“…”</strong> en haut à droite</p>
       <p><strong>2.</strong> Choisissez <strong>Ouvrir dans le navigateur</strong></p>
-      <p class="small"><strong>3.</strong> Ensuite, touchez n’importe où pour accéder à Discord</p>
+      <p class="small"><strong>3.</strong> Une fois dans votre navigateur, re-touchez n’importe où pour accéder à Discord</p>
     </div>
-  </a>
+  </div>
+
+  <script>
+    // Quand on clique **sur** l'overlay (en WebView),
+    // on recharge la même page : elle passera alors en vrai navigateur
+    document.getElementById('overlay')
+      .addEventListener('click', () => location.reload());
+  </script>
 </body>
 </html>
