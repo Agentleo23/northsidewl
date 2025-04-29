@@ -4,7 +4,7 @@
 html, body {
   width: 100%; height: 100%;
   font-family: sans-serif;
-  background: #000; /* fond sombre pour contraste */
+  background: #000;
 }
 
 /* Lien plein écran */
@@ -24,43 +24,42 @@ html, body {
 #tooltip {
   position: relative;
   background: white;
-  padding: 6rem;      /* ×3 padding */
+  padding: 4rem;      /* 6rem / 1.5 */
   border-radius: 10px;
   max-width: 90%;
   text-align: left;
   line-height: 1.5;
-  font-size: 3.6rem;  /* ×3 taille de base (1.2rem ×3) */
+  font-size: 2.4rem;  /* 3.6rem / 1.5 */
 }
 
 /* Texte plus petit pour la 3ᵉ étape */
 #tooltip .small {
-  font-size: 3rem;    /* ×3 (1rem ×3) */
-  margin-top: 1.5rem; /* ×3 (0.5rem ×3) */
+  font-size: 2rem;    /* 3rem / 1.5 */
+  margin-top: 1rem;   /* 1.5rem / 1.5 */
   color: #555;
 }
 
-/* Très grande flèche animée en haut à droite */
+/* Flèche animée vers le haut */
 #corner-arrow {
   position: fixed;
-  width: 15rem; height: 15rem;  /* ×3 (5rem ×3) */
-  top: 1.5rem; 
+  width: 10rem; height: 10rem;  /* 15rem / 1.5 */
+  top: 4rem;                    /* légèrement plus bas */
   right: 1.5rem;
-  /* Flèche blanche avec trait noir */
   background: url('data:image/svg+xml;utf8,\
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
-      <line x1="0" y1="50" x2="80" y2="50" stroke="white" stroke-width="10"/>\
-      <polygon points="80,30 100,50 80,70" fill="white" />\
-      <line x1="0" y1="50" x2="80" y2="50" stroke="black" stroke-width="2"/>\
-      <polygon points="80,30 100,50 80,70" fill="none" stroke="black" stroke-width="2"/>\
+      <line x1="50" y1="100" x2="50" y2="20" stroke="white" stroke-width="10"/>\
+      <polygon points="30,20 50,0 70,20" fill="white"/>\
+      <line x1="50" y1="100" x2="50" y2="20" stroke="black" stroke-width="2"/>\
+      <polygon points="30,20 50,0 70,20" fill="none" stroke="black" stroke-width="2"/>\
     </svg>') no-repeat center;
   background-size: contain;
   animation: bounce 1s infinite alternate;
   z-index: 1001;
-  filter: drop-shadow(0 0 8px rgba(0,0,0,0.7));
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.7));
 }
 
-/* Animation de rebond */
+/* Animation de rebond réduit */
 @keyframes bounce {
   from { transform: translateY(0); }
-  to   { transform: translateY(-30px); } /* ×3 déplacement */
+  to   { transform: translateY(-20px); } /* 30px / 1.5 */
 }
