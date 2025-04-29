@@ -39,12 +39,12 @@ html, body {
   color: #555;
 }
 
-/* Flèche animée vers le haut */
 #corner-arrow {
   position: fixed;
-  width: 10rem; height: 10rem;  /* 15rem / 1.5 */
-  top: 4rem;                    /* légèrement plus bas */
-  right: 1.5rem;
+  width: 15rem;
+  height: 15rem;
+  top: 4rem;
+  right: 1rem;   /* rapproché du bord droit */
   background: url('data:image/svg+xml;utf8,\
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
       <line x1="50" y1="100" x2="50" y2="20" stroke="white" stroke-width="10"/>\
