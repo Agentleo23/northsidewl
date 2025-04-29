@@ -1,49 +1,9 @@
-/* Reset minimal */
-* { margin:0; padding:0; box-sizing:border-box; }
-
-html, body {
-  width: 100%; height: 100%;
-  font-family: sans-serif;
-  background: #000;
-}
-
-/* Lien plein écran */
-#overlay {
-  display: flex;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-  text-decoration: none;
-  color: inherit;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Boîte blanche centrale */
-#tooltip {
-  position: relative;
-  background: white;
-  padding: 4rem;      /* 6rem / 1.5 */
-  border-radius: 10px;
-  max-width: 90%;
-  text-align: left;
-  line-height: 1.5;
-  font-size: 2.4rem;  /* 3.6rem / 1.5 */
-}
-
-/* Texte plus petit pour la 3ᵉ étape */
-#tooltip .small {
-  font-size: 2rem;    /* 3rem / 1.5 */
-  margin-top: 1rem;   /* 1.5rem / 1.5 */
-  color: #555;
-}
-
-/* Flèche animée vers le haut */
+/* Flèche animée vers le haut, taille ×1,5 */
 #corner-arrow {
   position: fixed;
-  width: 10rem; height: 10rem;  /* 15rem / 1.5 */
-  top: 4rem;                    /* légèrement plus bas */
+  width: 15rem;  /* 10rem ×1,5 */
+  height: 15rem; /* 10rem ×1,5 */
+  top: 4rem;     
   right: 1.5rem;
   background: url('data:image/svg+xml;utf8,\
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
@@ -56,10 +16,4 @@ html, body {
   animation: bounce 1s infinite alternate;
   z-index: 1001;
   filter: drop-shadow(0 0 5px rgba(0,0,0,0.7));
-}
-
-/* Animation de rebond réduit */
-@keyframes bounce {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-20px); } /* 30px / 1.5 */
 }
