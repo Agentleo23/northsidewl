@@ -2,9 +2,16 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 
 html, body {
-  width:100%; height:100%;
-  font-family:sans-serif;
-  background:#000;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* Utilise l’image Discord CDN en fond */
+  background: url("https://cdn.discordapp.com/attachments/1357478716212510893/1357613098583720067/28F1BD8B-197B-45E9-AA78-074905E9C5C6.png?ex=6811ccb9&is=68107b39&hm=d0a9b780b23d8c7099fda090d26cabd149dc01ad25cb455c325bdfc85f34dc38") 
+              no-repeat center center fixed;
+  background-size: cover;
+  font-family: sans-serif;
+  cursor: pointer;
 }
 
 /* Overlay plein écran */
