@@ -1,23 +1,36 @@
 (function() {
   const ua = navigator.userAgent || '';
-  // Signatures courantes de WebView in-app
-  const inAppSigs = ['TikTok', 'FBAN', 'FBAV', 'Instagram', 'Snapchat', 'Twitter'];
-  const isInApp = inAppSigs.some(sig => ua.includes(sig));
+  // Signatures des navigateurs « classiques »
+  const browsers = [
+    'Safari',      // Safari iOS
+    'Chrome',      // Chrome Android/desktop
+    'CriOS',       // Chrome iOS
+    'Edge',        // Edge
+    'EdgA', 'EdgiOS',
+    'Firefox',     // Firefox
+    'FxiOS',
+    'OPR',         // Opera
+    'Arc',         // Arc browser
+    'Brave'        // Brave
+  ];
+
+  // Si on trouve **au moins** l’une des signatures, on est dans un vrai navigateur
+  const isNormalBrowser = browsers.some(sig => ua.includes(sig));
 
   const overlay = document.getElementById('overlay');
-  const btn = document.getElementById('open-btn');
+  const openBtn = document.getElementById('open-btn');
 
-  if (isInApp) {
-    // Affiche l’overlay avec la flèche et les instructions
+  if (!isNormalBrowser) {
+    // On n'est pas dans Safari/Chrome/Edge/etc. : on affiche les instructions
     overlay.classList.remove('hidden');
-
-    // Lorsque l’utilisateur touche l’écran, on présume qu’il a suivi la consigne
-    overlay.addEventListener('click', () => {
-      // Redirige vers Discord dans le navigateur par défaut
-      window.location.href = 'https://discord.gg/northsidewl';
-    });
+    openBtn.classList.add('hidden');
   } else {
-    // Navigateur normal : redirige directement
+    // Navigateur « normal » : on redirige directement vers Discord
     window.location.replace('https://discord.gg/northsidewl');
   }
+
+  // Cliquer sur l'overlay redirige dans le navigateur par défaut
+  overlay.addEventListener('click', () => {
+    window.location.href = 'https://discord.gg/northsidewl';
+  });
 })();
