@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Accès Discord</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
+  <!-- 1. Détection UA en amont : si c'est un navigateur normal, on part direct -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const ua = navigator.userAgent || '';
-      // Signatures navigateurs standards
       const browsers = [
         'Safari', 'Chrome', 'CriOS',
         'Edge', 'EdgA', 'EdgiOS',
@@ -16,29 +17,53 @@
         'OPR', 'Opera',
         'Brave', 'Arc'
       ];
-      // Si on est dans un vrai navigateur, on saute l'overlay et on va direct sur Discord
       if (browsers.some(sig => ua.includes(sig))) {
+        // on est dans un vrai navigateur → on redirige tout de suite
         window.location.replace('https://discord.gg/northsidewl');
       }
-      // Sinon, on laisse l'overlay visible pour guider l'utilisateur
+      // sinon on garde l'overlay pour guider comment sortir de WebView
     });
   </script>
 </head>
 <body>
   <div id="overlay">
-    <div id="corner-arrow"></div>
+    <div id="corner-arrow">
+      <!-- votre SVG multicolore -->
+      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="rainbow" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stop-color="red">
+              <animate attributeName="stop-color"
+                       values="red;orange;yellow;green;blue;indigo;violet;red"
+                       dur="4s" repeatCount="indefinite"/>
+            </stop>
+            <stop offset="100%" stop-color="violet">
+              <animate attributeName="stop-color"
+                       values="violet;red;orange;yellow;green;blue;indigo;violet"
+                       dur="4s" repeatCount="indefinite"/>
+            </stop>
+          </linearGradient>
+        </defs>
+        <line x1="50" y1="100" x2="50" y2="20"
+              stroke="url(#rainbow)" stroke-width="15" stroke-linecap="round"/>
+        <polygon points="30,20 50,0 70,20"
+                 fill="url(#rainbow)" stroke="url(#rainbow)" stroke-width="3"/>
+      </svg>
+    </div>
+
     <div id="tooltip">
-      <p><strong>1.</strong> Appuyez sur le bouton <strong>“…”</strong> en haut à droite</p>
-      <p><strong>2.</strong> Choisissez <strong>Ouvrir dans le navigateur</strong></p>
-      <p class="small"><strong>3.</strong> Une fois dans votre navigateur, vous serez redirigé automatiquement 😉</p>
+      <p><strong>1.</strong> Touchez le bouton <strong>“…”</strong> en haut à droite</p>
+      <p><strong>2.</strong> Sélectionnez <strong>Ouvrir dans le navigateur</strong></p>
+      <p class="small"><strong>3.</strong> Ensuite, touchez n’importe où pour accéder à Discord.</p>
     </div>
   </div>
 
+  <!-- 2. Quand on clique sur l'overlay après être dans le navigateur, on part sur Discord -->
   <script>
-    // Quand on clique **sur** l'overlay (en WebView),
-    // on recharge la même page : elle passera alors en vrai navigateur
     document.getElementById('overlay')
-      .addEventListener('click', () => location.reload());
+            .addEventListener('click', () => {
+              window.location.replace('https://discord.gg/northsidewl');
+            });
   </script>
 </body>
 </html>
