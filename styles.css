@@ -48,10 +48,10 @@ html, body {
 
 #corner-arrow {
   position: fixed;
-  width: 22.5rem;    /* 15rem ×1.5 */
-  height: 22.5rem;   /* 15rem ×1.5 */
-  top: 6rem;         /* descend plus bas */
-  right: 0.5rem;     /* plus proche du bord droit */
+  width: 20rem;       /* optionnel : réduire pour être sûr */
+  height: 20rem;      
+  top: 6rem;
+  right: 0;
   background: url('data:image/svg+xml;utf8,\
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
   <line x1="50" y1="100" x2="50" y2="20" stroke="%23ccc" stroke-width="12"/>\
