@@ -7,6 +7,7 @@ html, body {
   background: white;
 }
 
+/* Lien couvrant tout l’écran */
 #overlay {
   display: flex;
   position: fixed;
@@ -19,34 +20,40 @@ html, body {
   justify-content: center;
 }
 
+/* La boîte blanche de consignes */
 #tooltip {
   position: relative;
   background: white;
   padding: 1.5rem;
   border-radius: 8px;
   max-width: 80%;
-  text-align: center;
+  text-align: left;
+  line-height: 1.4;
 }
 
-#arrow {
+/* Texte plus petit pour la 3ᵉ étape */
+#tooltip .small {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  color: #555;
+}
+
+/* Flèche animée en haut à droite */
+#corner-arrow {
   position: absolute;
-  width: 4rem; height: 4rem;
-  top: -4rem; right: -4rem;
+  width: 3rem; height: 3rem;
+  top: 1rem; right: 1rem;
   background: url('data:image/svg+xml;utf8,\
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">\
       <path d="M4 20l16-8-16-8v16z" fill="black"/>\
     </svg>') no-repeat center;
   background-size: contain;
   animation: bounce 1s infinite alternate;
+  z-index: 1001;
 }
 
+/* Animation de rebond de la flèche */
 @keyframes bounce {
   from { transform: translateY(0); }
   to   { transform: translateY(-10px); }
-}
-
-#tooltip p.small {
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  color: #555;
 }
