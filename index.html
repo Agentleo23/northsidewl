@@ -6,16 +6,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Overlay pour indiquer comment sortir de l'in-app -->
   <div id="overlay" class="hidden">
     <div id="tooltip">
       <div id="arrow"></div>
       <p>Appuyez sur “…” puis choisissez “Ouvrir dans le navigateur”</p>
     </div>
   </div>
-  <!-- Bouton visible si non dans WebView -->
+
+  <!-- (Optionnel) bouton visible si vous voulez une alternative -->
   <a id="open-btn" class="btn hidden" href="https://discord.gg/northsidewl">
     Ouvrir Discord dans le navigateur
   </a>
+
   <script src="detect-inapp.js"></script>
 </body>
 </html>
