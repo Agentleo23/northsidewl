@@ -44,26 +44,41 @@ html, body {
   color:#555;
 }
 
-/* Flèche animée vers le haut */
+/* Replace your old #corner-arrow and keyframes with this */
+
 #corner-arrow {
-  position:fixed;
-  width:10rem; height:10rem;
-  top:4rem;
-  right:1rem;
+  position: fixed;
+  width: 22.5rem;    /* 15rem ×1.5 */
+  height: 22.5rem;   /* 15rem ×1.5 */
+  top: 6rem;         /* descend plus bas */
+  right: 0.5rem;     /* plus proche du bord droit */
   background: url('data:image/svg+xml;utf8,\
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
-      <line x1="50" y1="100" x2="50" y2="20" stroke="white" stroke-width="10"/>\
-      <polygon points="30,20 50,0 70,20" fill="white"/>\
-      <line x1="50" y1="100" x2="50" y2="20" stroke="black" stroke-width="2"/>\
-      <polygon points="30,20 50,0 70,20" fill="none" stroke="black" stroke-width="2"/>\
-    </svg>') no-repeat center;
-  background-size:contain;
-  animation:bounce 1s infinite alternate;
-  filter:drop-shadow(0 0 5px rgba(0,0,0,0.7));
-  z-index:1001;
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">\
+  <line x1="50" y1="100" x2="50" y2="20" stroke="%23ccc" stroke-width="12"/>\
+  <polygon points="30,20 50,0 70,20" fill="%23ccc"/>\
+  <line x1="50" y1="100" x2="50" y2="20" stroke="%23000" stroke-width="3"/>\
+  <polygon points="30,20 50,0 70,20" fill="none" stroke="%23000" stroke-width="3"/>\
+</svg>') no-repeat center;
+  background-size: contain;
+  /* rebond + changement de teinte */
+  animation:
+    bounce 0.4s infinite alternate,   /* plus rapide */
+    hueShift 2s infinite linear;      /* multicolore */
+  /* ombre plus marquée */
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.7));
+  z-index: 1001;
 }
 
 @keyframes bounce {
   from { transform: translateY(0); }
-  to   { transform: translateY(-20px); }
+  to   { transform: translateY(-50px); }  /* amplitude plus grande */
+}
+
+@keyframes hueShift {
+  from {
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.7)) hue-rotate(0deg);
+  }
+  to {
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.7)) hue-rotate(360deg);
+  }
 }
